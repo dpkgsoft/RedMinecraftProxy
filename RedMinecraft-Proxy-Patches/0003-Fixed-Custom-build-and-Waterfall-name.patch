@@ -1,0 +1,50 @@
+From c5d255fa62e1a070712b4f5e2c609b01fc7f82dd Mon Sep 17 00:00:00 2001
+From: MrAlisCoder <mralis@dpkgsoft.com>
+Date: Mon, 23 Aug 2021 19:26:03 +0300
+Subject: [PATCH 3/3] Fixed Custom build and Waterfall name
+
+---
+ pom.xml                                                     | 4 ++--
+ proxy/src/main/java/net/md_5/bungee/BungeeCordLauncher.java | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index 0eb69a14..e8896730 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -365,8 +365,8 @@
+                                 </goals>
+                                 <inherited>false</inherited>
+                                 <configuration>
+-                                    <doctitle>Waterfall ${project.version} API</doctitle>
+-                                    <windowtitle>Waterfall ${project.version} API</windowtitle>
++                                    <doctitle>RedMinecraft ${project.version} API</doctitle>
++                                    <windowtitle>RedMinecraft ${project.version} API</windowtitle>
+                                     <sourcepath>
+                                         api/target/generated-sources/delombok;
+                                         chat/target/generated-sources/delombok
+diff --git a/proxy/src/main/java/net/md_5/bungee/BungeeCordLauncher.java b/proxy/src/main/java/net/md_5/bungee/BungeeCordLauncher.java
+index 0db3d76a..95aaa360 100644
+--- a/proxy/src/main/java/net/md_5/bungee/BungeeCordLauncher.java
++++ b/proxy/src/main/java/net/md_5/bungee/BungeeCordLauncher.java
+@@ -54,7 +54,7 @@ public class BungeeCordLauncher
+             if ( buildDate.before( deadline.getTime() ) )
+             {
+                 System.err.println( "*** Hey! This build is potentially outdated :( ***" );
+-                System.err.println( "*** Please check for a new build from https://papermc.io/downloads ***" );
++                System.err.println( "*** Please check for a new build from https://redminecraft.com/proxy ***" );
+                 System.err.println( "*** Should this build be outdated, you will get NO support for it. ***" );
+                 System.err.println( "*** Server will start in 10 seconds ***" );
+                 Thread.sleep( TimeUnit.SECONDS.toMillis( 10 ) );
+@@ -63,7 +63,7 @@ public class BungeeCordLauncher
+ 
+         BungeeCord bungee = new BungeeCord();
+         ProxyServer.setInstance( bungee );
+-        bungee.getLogger().info( "Enabled Waterfall version " + bungee.getVersion() );
++        bungee.getLogger().info( "Enabled RedMinecraft version " + bungee.getVersion() );
+         bungee.start();
+ 
+         if ( !options.has( "noconsole" ) )
+-- 
+2.25.1
+
