@@ -1,0 +1,98 @@
+From a853138d029107f4f3211f209cbffa11ec4c2354 Mon Sep 17 00:00:00 2001
+From: MrAlisCoder <mralis@dpkgsoft.com>
+Date: Mon, 23 Aug 2021 10:42:59 +0300
+Subject: [PATCH 2/2] Change titles
+
+---
+ bootstrap/src/main/java/net/md_5/bungee/Bootstrap.java      | 2 +-
+ .../java/net/md_5/bungee/protocol/MinecraftDecoder.java     | 6 +++---
+ proxy/src/main/java/net/md_5/bungee/BungeeCord.java         | 2 +-
+ .../main/java/net/md_5/bungee/command/CommandReload.java    | 4 ++--
+ .../java/net/md_5/bungee/connection/DownstreamBridge.java   | 3 ++-
+ 5 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/bootstrap/src/main/java/net/md_5/bungee/Bootstrap.java b/bootstrap/src/main/java/net/md_5/bungee/Bootstrap.java
+index a4516ed9..104f42c0 100644
+--- a/bootstrap/src/main/java/net/md_5/bungee/Bootstrap.java
++++ b/bootstrap/src/main/java/net/md_5/bungee/Bootstrap.java
+@@ -7,7 +7,7 @@ public class Bootstrap
+     {
+         if ( Float.parseFloat( System.getProperty( "java.class.version" ) ) < 52.0 )
+         {
+-            System.err.println( "*** ERROR *** Waterfall requires Java 8 or above to function! Please download and install it!" );
++            System.err.println( "*** ERROR *** RedMinecraft Proxy requires Java 8 or above to function! Please download and install it!" );
+             System.out.println( "You can check your Java version with the command: java -version" );
+             return;
+         }
+diff --git a/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java b/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+index 01d35f41..60e7a2d5 100644
+--- a/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
++++ b/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+@@ -105,13 +105,13 @@ public class MinecraftDecoder extends MessageToMessageDecoder<ByteBuf>
+     // Cached Exceptions:
+     private static final CorruptedFrameException PACKET_LENGTH_OVERSIZED =
+             new CorruptedFrameException("A packet could not be decoded because it was too large. For more "
+-                    + "information, launch Waterfall with -Dwaterfall.packet-decode-logging=true");
++                    + "information, launch RedMinecraft Proxy with -Dwaterfall.packet-decode-logging=true");
+     private static final CorruptedFrameException PACKET_LENGTH_UNDERSIZED =
+             new CorruptedFrameException("A packet could not be decoded because it was smaller than allowed. For more "
+-                    + "information, launch Waterfall with -Dwaterfall.packet-decode-logging=true");
++                    + "information, launch RedMinecraft Proxy with -Dwaterfall.packet-decode-logging=true");
+     private static final BadPacketException PACKET_NOT_READ_TO_END =
+             new BadPacketException("Couldn't read all bytes from a packet. For more "
+-                    + "information, launch Waterfall with -Dwaterfall.packet-decode-logging=true");
++                    + "information, launch RedMinecraft Proxy with -Dwaterfall.packet-decode-logging=true");
+ 
+ 
+     private void doLengthSanityChecks(ByteBuf buf, DefinedPacket packet,
+diff --git a/proxy/src/main/java/net/md_5/bungee/BungeeCord.java b/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
+index 07d74c67..43e7cc81 100644
+--- a/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
++++ b/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
+@@ -539,7 +539,7 @@ public class BungeeCord extends ProxyServer
+     @Override
+     public String getName()
+     {
+-        return "Waterfall";
++        return "RedMinecraft";
+     }
+ 
+     @Override
+diff --git a/proxy/src/main/java/net/md_5/bungee/command/CommandReload.java b/proxy/src/main/java/net/md_5/bungee/command/CommandReload.java
+index 720d0c3b..c6f83e59 100644
+--- a/proxy/src/main/java/net/md_5/bungee/command/CommandReload.java
++++ b/proxy/src/main/java/net/md_5/bungee/command/CommandReload.java
+@@ -23,7 +23,7 @@ public class CommandReload extends Command
+         BungeeCord.getInstance().startListeners();
+         BungeeCord.getInstance().getPluginManager().callEvent( new ProxyReloadEvent( sender ) );
+ 
+-        sender.sendMessage( ChatColor.BOLD.toString() + ChatColor.RED.toString() + "Waterfall has been reloaded."
+-                + " This is NOT advisable and you will not be supported with any issues that arise! Please restart Waterfall ASAP." );
++        sender.sendMessage( ChatColor.BOLD.toString() + ChatColor.RED.toString() + "RedMinecraft Proxy has been reloaded."
++                + " This is NOT advisable and you will not be supported with any issues that arise! Please restart RedMinecraft Proxy ASAP." );
+     }
+ }
+diff --git a/proxy/src/main/java/net/md_5/bungee/connection/DownstreamBridge.java b/proxy/src/main/java/net/md_5/bungee/connection/DownstreamBridge.java
+index 9e180c30..6db6740a 100644
+--- a/proxy/src/main/java/net/md_5/bungee/connection/DownstreamBridge.java
++++ b/proxy/src/main/java/net/md_5/bungee/connection/DownstreamBridge.java
+@@ -30,6 +30,7 @@ import net.md_5.bungee.ServerConnection;
+ import net.md_5.bungee.ServerConnection.KeepAliveData;
+ import net.md_5.bungee.UserConnection;
+ import net.md_5.bungee.Util;
++import net.md_5.bungee.api.ChatColor;
+ import net.md_5.bungee.api.ProxyServer;
+ import net.md_5.bungee.api.chat.BaseComponent;
+ import net.md_5.bungee.api.chat.TextComponent;
+@@ -293,7 +294,7 @@ public class DownstreamBridge extends PacketHandler
+             Preconditions.checkState( !serverBrand.contains( bungee.getName() ), "Cannot connect proxy to itself!" );
+ 
+             brand = ByteBufAllocator.DEFAULT.heapBuffer();
+-            DefinedPacket.writeString( bungee.getName() + " <- " + serverBrand, brand ); // Waterfall
++            DefinedPacket.writeString( ChatColor.RED + "" + ChatColor.BOLD + bungee.getName(), brand ); // Waterfall
+             pluginMessage.setData( brand );
+             brand.release();
+             // changes in the packet are ignored so we need to send it manually
+-- 
+2.25.1
+

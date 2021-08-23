@@ -1,0 +1,784 @@
+From 9cb7365edda8230a97b951855f06c01428f3c43b Mon Sep 17 00:00:00 2001
+From: MrAlisCoder <mralis@dpkgsoft.com>
+Date: Mon, 23 Aug 2021 10:23:04 +0300
+Subject: [PATCH 1/2] POM Changes
+
+---
+ api/pom.xml                   | 26 ++++++-------
+ bootstrap/pom.xml             | 18 ++++-----
+ chat/pom.xml                  | 12 +++---
+ config/pom.xml                | 12 +++---
+ event/pom.xml                 | 12 +++---
+ log/pom.xml                   | 16 ++++----
+ log4j/pom.xml                 | 12 +++---
+ module/cmd-alert/pom.xml      |  8 ++--
+ module/cmd-find/pom.xml       |  8 ++--
+ module/cmd-list/pom.xml       |  8 ++--
+ module/cmd-send/pom.xml       |  8 ++--
+ module/cmd-server/pom.xml     |  8 ++--
+ module/pom.xml                | 18 ++++-----
+ module/reconnect-yaml/pom.xml |  8 ++--
+ native/pom.xml                | 12 +++---
+ pom.xml                       | 70 ++++++++++-------------------------
+ protocol/pom.xml              | 16 ++++----
+ proxy/pom.xml                 | 30 +++++++--------
+ query/pom.xml                 | 16 ++++----
+ 19 files changed, 143 insertions(+), 175 deletions(-)
+
+diff --git a/api/pom.xml b/api/pom.xml
+index 0680a5a5..a8c3cec2 100644
+--- a/api/pom.xml
++++ b/api/pom.xml
+@@ -4,42 +4,42 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-api</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-api</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-API</name>
++    <name>RMCP-API</name>
+     <description>API implemented by the Elastic Portal Suite</description>
+ 
+     <dependencies>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-chat</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-chat</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-config</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-config</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-event</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-event</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-protocol</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-protocol</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+diff --git a/bootstrap/pom.xml b/bootstrap/pom.xml
+index 7a9e8258..9e7a9b87 100644
+--- a/bootstrap/pom.xml
++++ b/bootstrap/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-bootstrap</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-bootstrap</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Bootstrap</name>
+-    <description>Java 1.6 loader for Waterfall</description>
++    <name>RMCP-Bootstrap</name>
++    <description>Java 1.6 loader for RedMinecraft Proxy</description>
+ 
+     <properties>
+         <maven.deploy.skip>true</maven.deploy.skip>
+@@ -29,15 +29,15 @@
+ 
+     <dependencies>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-proxy</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-proxy</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+     </dependencies>
+ 
+     <build>
+-        <finalName>Waterfall</finalName>
++        <finalName>RedMinecraft</finalName>
+         <plugins>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+diff --git a/chat/pom.xml b/chat/pom.xml
+index cfa0e16e..3bc8579a 100644
+--- a/chat/pom.xml
++++ b/chat/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-chat</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-chat</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Chat</name>
+-    <description>Minecraft JSON chat API intended for use with Waterfall</description>
++    <name>RMCP-Chat</name>
++    <description>Minecraft JSON chat API intended for use with RedMinecraft</description>
+ 
+     <dependencies>
+         <dependency>
+diff --git a/config/pom.xml b/config/pom.xml
+index 67e2500f..a40f437d 100644
+--- a/config/pom.xml
++++ b/config/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-config</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-config</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Config</name>
+-    <description>Generic java configuration API intended for use with Waterfall</description>
++    <name>RMCP-Config</name>
++    <description>Generic java configuration API intended for use with RedMinecraft</description>
+ 
+     <dependencies>
+         <dependency>
+diff --git a/event/pom.xml b/event/pom.xml
+index 563783e9..3f9b6295 100644
+--- a/event/pom.xml
++++ b/event/pom.xml
+@@ -4,17 +4,17 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-event</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-event</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Event</name>
+-    <description>Generic java event dispatching API intended for use with Waterfall.</description>
++    <name>RMCP-Event</name>
++    <description>Generic java event dispatching API intended for use with RedMinecraft.</description>
+ </project>
+diff --git a/log/pom.xml b/log/pom.xml
+index 3663d6d9..13407904 100644
+--- a/log/pom.xml
++++ b/log/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-log</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-log</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Log</name>
+-    <description>Simplistic and performant java.util.Logger based logger and console API designed for use with Waterfall and Minecraft related applications.</description>
++    <name>RMCP-Log</name>
++    <description>Simplistic and performant java.util.Logger based logger and console API designed for use with RedMinecraft and Minecraft related applications.</description>
+ 
+     <dependencies>
+         <dependency>
+@@ -26,8 +26,8 @@
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-chat</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-chat</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+diff --git a/log4j/pom.xml b/log4j/pom.xml
+index 7ec6e530..6fc11581 100644
+--- a/log4j/pom.xml
++++ b/log4j/pom.xml
+@@ -3,19 +3,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-log4j</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-log4j</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Log</name>
+-    <description>Simplistic and performant Log4j2 based logger and console API designed for use with Waterfall and Minecraft related applications.</description>
++    <name>RMCP-Log</name>
++    <description>Simplistic and performant Log4j2 based logger and console API designed for use with RedMinecraft and Minecraft related applications.</description>
+ 
+     <properties>
+         <log4j2.version>2.14.0</log4j2.version>
+diff --git a/module/cmd-alert/pom.xml b/module/cmd-alert/pom.xml
+index 11e990d9..edc174eb 100644
+--- a/module/cmd-alert/pom.xml
++++ b/module/cmd-alert/pom.xml
+@@ -4,14 +4,14 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-module</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-module</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-module-cmd-alert</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-module-cmd-alert</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+diff --git a/module/cmd-find/pom.xml b/module/cmd-find/pom.xml
+index b732d67f..e06eaefe 100644
+--- a/module/cmd-find/pom.xml
++++ b/module/cmd-find/pom.xml
+@@ -4,14 +4,14 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-module</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-module</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-module-cmd-find</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-module-cmd-find</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+diff --git a/module/cmd-list/pom.xml b/module/cmd-list/pom.xml
+index d17cb787..aca03e6a 100644
+--- a/module/cmd-list/pom.xml
++++ b/module/cmd-list/pom.xml
+@@ -4,14 +4,14 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-module</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-module</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-module-cmd-list</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-module-cmd-list</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+diff --git a/module/cmd-send/pom.xml b/module/cmd-send/pom.xml
+index d1972708..195341ad 100644
+--- a/module/cmd-send/pom.xml
++++ b/module/cmd-send/pom.xml
+@@ -4,14 +4,14 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-module</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-module</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-module-cmd-send</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-module-cmd-send</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+diff --git a/module/cmd-server/pom.xml b/module/cmd-server/pom.xml
+index 3b2c4952..1e257b80 100644
+--- a/module/cmd-server/pom.xml
++++ b/module/cmd-server/pom.xml
+@@ -4,14 +4,14 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-module</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-module</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-module-cmd-server</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-module-cmd-server</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+diff --git a/module/pom.xml b/module/pom.xml
+index 0ef98d58..918a27d2 100644
+--- a/module/pom.xml
++++ b/module/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-module</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-module</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>pom</packaging>
+ 
+-    <name>Waterfall Modules</name>
+-    <description>Parent project for all Waterfall modules.</description>
++    <name>RedMinecraft Modules</name>
++    <description>Parent project for all RedMinecraft modules.</description>
+ 
+     <modules>
+         <module>cmd-alert</module>
+@@ -28,15 +28,15 @@
+     </modules>
+ 
+     <properties>
+-        <module.author>WaterfallMC</module.author>
++        <module.author>DpkgSoft</module.author>
+         <maven.deploy.skip>true</maven.deploy.skip>
+         <maven.javadoc.skip>true</maven.javadoc.skip>
+     </properties>
+ 
+     <dependencies>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-api</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-api</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+diff --git a/module/reconnect-yaml/pom.xml b/module/reconnect-yaml/pom.xml
+index b88398cf..83a3e446 100644
+--- a/module/reconnect-yaml/pom.xml
++++ b/module/reconnect-yaml/pom.xml
+@@ -4,14 +4,14 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-module</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-module</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-module-reconnect-yaml</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-module-reconnect-yaml</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+diff --git a/native/pom.xml b/native/pom.xml
+index 652a869d..b1a7e947 100644
+--- a/native/pom.xml
++++ b/native/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-native</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-native</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Native</name>
+-    <description>Optional native code to speed up and enhance Waterfall functionality.</description>
++    <name>RMCP-Native</name>
++    <description>Optional native code to speed up and enhance RedMinecraft functionality.</description>
+ 
+     <dependencies>
+         <dependency>
+diff --git a/pom.xml b/pom.xml
+index 8d86e36c..0eb69a14 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -4,24 +4,24 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-super</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-super</artifactId>
+         <version>dev-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-parent</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-parent</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>pom</packaging>
+ 
+-    <name>Waterfall-Parent</name>
+-    <description>Parent project for all Waterfall modules.</description>
+-    <url>https://github.com/WaterfallMC/Waterfall</url>
++    <name>RMCP-Parent</name>
++    <description>Parent project for all RedMinecraft modules.</description>
++    <url>https://github.com/dpkgsoft/redminecraft</url>
+     <inceptionYear>2015</inceptionYear>
+     <organization>
+-        <name>WaterfallMC</name>
+-        <url>https://github.com/WaterfallMC</url>
++        <name>DpkgSoft</name>
++        <url>https://github.com/dpkgsoft</url>
+     </organization>
+     <licenses>
+         <license>
+@@ -47,6 +47,12 @@
+         <developer>
+             <id>fuzzybot</id>
+         </developer>
++        <developer>
++            <id>md_5</id>
++        </developer>
++        <developer>
++            <id>MrAlisCoder</id>
++        </developer>
+     </developers>
+ 
+     <modules>
+@@ -66,26 +72,15 @@
+     </modules>
+ 
+     <scm>
+-        <connection>scm:git:git@github.com:com:WaterfallMC/Waterfall.git</connection>
+-        <developerConnection>scm:git:git@github.com:WaterfallMC/Waterfall.git</developerConnection>
+-        <url>git@github.com:WaterfallMC/Waterfall.git</url>
++        <connection>scm:git:git@github.com:com:dpkgsoft/RedMinecraftProxy.git</connection>
++        <developerConnection>scm:git:git@github.com:dpkgsoft/RedMinecraftProxy.git</developerConnection>
++        <url>git@github.com:dpkgsoft/RedMinecraftProxy.git</url>
+     </scm>
+     <issueManagement>
+         <system>GitHub</system>
+-        <url>https://github.com/PaperMC/Waterfall/issues</url>
++        <url>https://github.com/dpkgsoft/RedMinecraftProxy/issues</url>
+     </issueManagement>
+ 
+-    <distributionManagement>
+-        <repository>
+-            <id>papermc-releases</id>
+-            <url>https://papermc.io/repo/repository/maven-releases/</url>
+-        </repository>
+-        <snapshotRepository>
+-            <id>papermc-snapshots</id>
+-            <url>https://papermc.io/repo/repository/maven-snapshots/</url>
+-        </snapshotRepository>
+-    </distributionManagement>
+-
+     <properties>
+         <build.number>unknown</build.number>
+         <lombok.version>1.18.20</lombok.version>
+@@ -153,33 +148,6 @@
+                     <doclint>none</doclint>
+                 </configuration>
+             </plugin>
+-            <!-- Alow manging of import orders to allow avoiding conflicts
+-             <plugin>
+-                <groupId>org.apache.maven.plugins</groupId>
+-                <artifactId>maven-checkstyle-plugin</artifactId>
+-                <version>3.1.2</version>
+-                <executions>
+-                    <execution>
+-                        <phase>process-classes</phase>
+-                        <goals>
+-                            <goal>check</goal>
+-                        </goals>
+-                    </execution>
+-                </executions>
+-                <configuration>
+-                    <configLocation>checkstyle.xml</configLocation>
+-                    <includeResources>false</includeResources>
+-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+-                </configuration>
+-                <dependencies>
+-                    <dependency>
+-                        <groupId>com.puppycrawl.tools</groupId>
+-                        <artifactId>checkstyle</artifactId>
+-                        <version>8.44</version>
+-                    </dependency>
+-                </dependencies>
+-            </plugin>
+-            -->
+             <plugin>
+                 <groupId>org.codehaus.mojo</groupId>
+                 <artifactId>animal-sniffer-maven-plugin</artifactId>
+diff --git a/protocol/pom.xml b/protocol/pom.xml
+index dbc0a3ab..e453a9d6 100644
+--- a/protocol/pom.xml
++++ b/protocol/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-protocol</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-protocol</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Protocol</name>
+-    <description>Minimal implementation of the Minecraft protocol for use in Waterfall</description>
++    <name>RMCP-Protocol</name>
++    <description>Minimal implementation of the Minecraft protocol for use in RedMinecraft</description>
+ 
+     <!-- We really shouldn't depend on external repositories, but at least this is the Central staging one -->
+     <repositories>
+@@ -41,8 +41,8 @@
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-chat</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-chat</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+diff --git a/proxy/pom.xml b/proxy/pom.xml
+index c3a2eeb6..84c2c434 100644
+--- a/proxy/pom.xml
++++ b/proxy/pom.xml
+@@ -4,18 +4,18 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-proxy</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-proxy</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Proxy</name>
++    <name>RMCP-Proxy</name>
+     <description>Proxy component of the Elastic Portal Suite</description>
+ 
+     <properties>
+@@ -64,32 +64,32 @@
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-api</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-api</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-log4j</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-log4j</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-native</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-native</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-protocol</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-protocol</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-query</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-query</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+diff --git a/query/pom.xml b/query/pom.xml
+index dea7d85f..54866d71 100644
+--- a/query/pom.xml
++++ b/query/pom.xml
+@@ -4,19 +4,19 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <parent>
+-        <groupId>io.github.waterfallmc</groupId>
+-        <artifactId>waterfall-parent</artifactId>
++        <groupId>com.redminecraft.proxy</groupId>
++        <artifactId>rmcp-parent</artifactId>
+         <version>1.17-R0.1-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>io.github.waterfallmc</groupId>
+-    <artifactId>waterfall-query</artifactId>
++    <groupId>com.redminecraft.proxy</groupId>
++    <artifactId>rmcp-query</artifactId>
+     <version>1.17-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Waterfall-Query</name>
+-    <description>Minecraft query implementation based on the Waterfall API.</description>
++    <name>RMCP-Query</name>
++    <description>Minecraft query implementation based on the RedMinecraft API.</description>
+ 
+     <dependencies>
+         <dependency>
+@@ -26,8 +26,8 @@
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-            <groupId>io.github.waterfallmc</groupId>
+-            <artifactId>waterfall-api</artifactId>
++            <groupId>com.redminecraft.proxy</groupId>
++            <artifactId>rmcp-api</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+-- 
+2.25.1
+
