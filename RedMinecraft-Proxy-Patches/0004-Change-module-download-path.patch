@@ -1,0 +1,36 @@
+From d16418434b75d40faa3911f7307754d2888ab978 Mon Sep 17 00:00:00 2001
+From: MrAlisCoder <mralis@dpkgsoft.com>
+Date: Mon, 23 Aug 2021 20:33:10 +0300
+Subject: [PATCH 4/4] Change module download path
+
+---
+ .../net/md_5/bungee/module/JenkinsModuleSource.java  | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/proxy/src/main/java/net/md_5/bungee/module/JenkinsModuleSource.java b/proxy/src/main/java/net/md_5/bungee/module/JenkinsModuleSource.java
+index 338c30d3..8a1e9477 100644
+--- a/proxy/src/main/java/net/md_5/bungee/module/JenkinsModuleSource.java
++++ b/proxy/src/main/java/net/md_5/bungee/module/JenkinsModuleSource.java
+@@ -18,12 +18,14 @@ public class JenkinsModuleSource implements ModuleSource
+         System.out.println( "Attempting to Jenkins download module " + module.getName() + " v" + version.getBuild() );
+         try
+         {
++            // https://builds.redminecraft.com/%1$s/%2$s/artifact/%3$s/module/%4$s/target/%5$s.jar
+             final String url = String.format(
+-                "https://papermc.io/api/v2/projects/%1$s/versions/%2$s/builds/%3$s/downloads/%4$s-%2$s-%3$s.jar",
+-                "waterfall",
+-                net.md_5.bungee.api.ProxyServer.getInstance().getVersion().split(":")[2].split("-")[0],
+-                version.getBuild(),
+-                module.getName()
++                    "https://builds.redminecraft.com/%1$s/%2$s/artifact/%3$s/module/%4$s/target/%5$s.jar",
++                    "RedMinecraftProxy",
++                    version.getBuild(),
++                    "RedMinecraft-Proxy",
++                    module.getName().replace('_', '-'),
++                    module.getName()
+             );
+             URL website = new URL( url );
+             URLConnection con = website.openConnection();
+-- 
+2.25.1
+
