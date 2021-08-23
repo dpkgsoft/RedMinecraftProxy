@@ -21,7 +21,7 @@ jobs:
           distribution: 'adopt'
       - name: patch
         run: |
-          chmod -x ./redminecraft
+          chmod +x ./redminecraft
           git config --global user.email "no-reply@github.com"
           git config --global user.name "Github Actions"
           ./redminecraft p
