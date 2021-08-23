@@ -62,6 +62,7 @@ fi
 
 
 # Apply patches
-applyPatch BungeeCord Waterfall-Proxy HEAD
+applyPatch BungeeCord RedMinecraft-Proxy HEAD
+applyPatch RedMinecraft-Proxy RedMinecraft-Proxy HEAD
 
 enableCommitSigningIfNeeded

@@ -38,5 +38,5 @@
 *.so            binary
 *.war           binary
 
-# Waterfall Extras
+# Waterfall & RedMinecraft Extras
 *.sh            text
