@@ -1,7 +1,7 @@
 From d16418434b75d40faa3911f7307754d2888ab978 Mon Sep 17 00:00:00 2001
 From: MrAlisCoder <mralis@dpkgsoft.com>
 Date: Mon, 23 Aug 2021 20:33:10 +0300
-Subject: [PATCH 4/4] Change module download path
+Subject: [PATCH 4/5] Change module download path
 
 ---
  .../net/md_5/bungee/module/JenkinsModuleSource.java  | 12 +++++++-----
@@ -32,5 +32,5 @@ index 338c30d3..8a1e9477 100644
              URL website = new URL( url );
              URLConnection con = website.openConnection();
 -- 
-2.25.1
+2.30.1.windows.1
 
